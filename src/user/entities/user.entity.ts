@@ -46,6 +46,14 @@ export class User {
   @Generated('uuid')
   roleId: string;
 
+  @Column({ name: 'created_by' })
+  @Generated('uuid')
+  createdBy: string;
+
+  @Column({ name: 'updated_by' })
+  @Generated('uuid')
+  updatedBy: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
