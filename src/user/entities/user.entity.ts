@@ -41,7 +41,7 @@ export class User {
   @Column('jsonb', { array: true, name: 'user_details' })
   userDetails: Record<string, any>;
 
-  @Column()
+  @Column({ name: 'role_id' })
   @Generated('uuid')
   roleId: string;
 
