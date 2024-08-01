@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
   VersionColumn,
 } from 'typeorm';
+import { ConfigDto, UserDetailsDto } from '../dto/create-user.dto';
 
 @Entity('users')
 export class User {
@@ -36,10 +37,10 @@ export class User {
   isRegistered: boolean;
 
   @Column('jsonb')
-  config: Record<string, any>;
+  config: ConfigDto;
 
-  @Column('jsonb', { array: true, name: 'user_details' })
-  userDetails: Record<string, any>;
+  @Column('jsonb', { name: 'user_details' })
+  userDetails: UserDetailsDto[];
 
   @Column({ name: 'role_id' })
   @Generated('uuid')

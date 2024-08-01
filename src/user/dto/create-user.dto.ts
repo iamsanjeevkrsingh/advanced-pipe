@@ -7,34 +7,28 @@ import {
   IsNotEmpty,
   IsNumber,
   IsObject,
-  IsOptional,
   IsPositive,
   IsString,
   IsUUID,
-  Max,
   MaxLength,
   Min,
   MinLength,
   ValidateNested,
 } from 'class-validator';
 
-class UserDetailsDto {
-  @IsOptional()
+export class UserDetailsDto {
   @IsNumber()
   @IsPositive()
   bmi?: number;
 
-  @IsOptional()
   @IsString()
   name?: string;
 }
-class ConfigDto {
-  @IsOptional()
+export class ConfigDto {
   @IsNumber()
   @IsPositive()
   bmi?: number;
 
-  @IsOptional()
   @IsString()
   name?: string;
 }
@@ -63,13 +57,11 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   @IsEmail()
-  email: boolean;
+  email: string;
 
   @IsNotEmpty()
   @IsString()
   @IsMobilePhone('en-IN')
-  @Min(13)
-  @Max(13)
   mobileNumber: string;
 
   @IsNotEmpty()
@@ -83,14 +75,12 @@ export class CreateUserDto {
   isRegistered: boolean;
 
   @IsNotEmpty()
-  @IsOptional()
   @ValidateNested()
   @Type(() => ConfigDto)
   @IsObject()
   config: ConfigDto | null;
 
   @IsNotEmpty()
-  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => UserDetailsDto)
